@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brandon Temple Resume</title>
     <link rel="stylesheet" href="resume.css">
+    <link rel="stylesheet" href="resume-print.css" media="print">
 </head>
 <body>
+    <div class="resume-actions no-print">
+        <a href="index.html" class="resume-action-link">Back to Site</a>
+        <button type="button" class="resume-action-button" id="print-resume-button">Print or Save PDF</button>
+    </div>
     <main class="resume">
         <header class="hero">
             <div>
@@ -183,5 +188,23 @@
             </div>
         </section>
     </main>
+    <script>
+        (function () {
+            const printButton = document.getElementById("print-resume-button");
+            const shouldAutoPrint = new URLSearchParams(window.location.search).get("print") === "1";
+
+            if (printButton) {
+                printButton.addEventListener("click", function () {
+                    window.print();
+                });
+            }
+
+            if (shouldAutoPrint) {
+                window.addEventListener("load", function () {
+                    window.print();
+                }, { once: true });
+            }
+        }());
+    </script>
 </body>
 </html>
