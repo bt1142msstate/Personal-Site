@@ -1,15 +1,20 @@
 /* Root Variables */
 :root {
-    --maroon: #660000;
-    --maroon-dark: #4d0000;
-    --maroon-light: #800000;
-    --accent: #2C5F8D;
-    --text-dark: #1a1a1a;
-    --text-gray: #666666;
-    --bg-light: #f8f9fa;
-    --bg-white: #ffffff;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --maroon: #cf5464;
+    --maroon-dark: #5b1722;
+    --maroon-light: #ff97a1;
+    --accent: #7dc7ff;
+    --text-dark: #f7f1eb;
+    --text-gray: #c5bbb5;
+    --bg-body: #09070d;
+    --bg-light: #13101a;
+    --bg-white: #1d1721;
+    --surface-strong: #251d2b;
+    --border: rgba(255, 255, 255, 0.08);
+    --nav-bg: rgba(9, 7, 13, 0.82);
+    --nav-bg-strong: rgba(13, 10, 19, 0.94);
+    --shadow: rgba(0, 0, 0, 0.32);
+    --shadow-hover: rgba(0, 0, 0, 0.5);
 }
 
 /* Global Styles */
@@ -26,6 +31,11 @@ html {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     color: var(--text-dark);
+    background:
+        radial-gradient(circle at top left, rgba(207, 84, 100, 0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(125, 199, 255, 0.12), transparent 26%),
+        linear-gradient(180deg, #0b0910 0%, var(--bg-body) 100%);
+    color-scheme: dark;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -62,17 +72,18 @@ a {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--nav-bg);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px var(--shadow);
+    border-bottom: 1px solid var(--border);
     z-index: 1000;
 }
 
 .nav-logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--maroon);
+    color: var(--text-dark);
 }
 
 .nav-links {
@@ -83,8 +94,13 @@ a {
 
 .nav-links a {
     font-weight: 500;
-    color: var(--text-dark);
+    color: var(--text-gray);
     position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-dark);
 }
 
 .nav-links a::after {
@@ -115,19 +131,23 @@ a {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--maroon);
+    background: var(--maroon-light);
     transition: all 0.3s ease;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-    color: var(--bg-white);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(207, 84, 100, 0.28), transparent 32%),
+        radial-gradient(circle at 85% 10%, rgba(125, 199, 255, 0.18), transparent 28%),
+        linear-gradient(145deg, #120d14 0%, #1a111b 45%, #0c0911 100%);
+    color: var(--text-dark);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-top: 80px;
+    border-bottom: 1px solid var(--border);
 }
 
 .hero-content {
@@ -142,6 +162,8 @@ a {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     animation: fadeInUp 0.8s ease;
 }
 
@@ -178,27 +200,29 @@ a {
     transition: all 0.3s ease;
     cursor: pointer;
     text-align: center;
+    border: 1px solid transparent;
 }
 
 .btn-primary {
-    background: var(--bg-white);
-    color: var(--maroon);
+    background: var(--accent);
+    color: #08111a;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.36);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--bg-white);
-    border: 2px solid var(--bg-white);
+    color: var(--text-dark);
+    border: 1px solid rgba(247, 241, 235, 0.3);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-white);
-    color: var(--maroon);
+    background: rgba(247, 241, 235, 0.08);
+    border-color: rgba(247, 241, 235, 0.5);
     transform: translateY(-2px);
 }
 
@@ -215,7 +239,7 @@ a {
 }
 
 .hero-social a:hover {
-    color: var(--bg-white);
+    color: var(--accent);
     transform: translateY(-3px);
 }
 
@@ -232,7 +256,7 @@ a {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 3rem;
-    color: var(--maroon);
+    color: var(--text-dark);
     position: relative;
 }
 
@@ -241,7 +265,8 @@ a {
     display: block;
     width: 60px;
     height: 4px;
-    background: var(--maroon);
+    background: linear-gradient(90deg, var(--maroon) 0%, var(--accent) 100%);
+    border-radius: 999px;
     margin: 1rem auto 0;
 }
 
@@ -267,9 +292,17 @@ a {
     gap: 2rem;
 }
 
+.skill-category {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
 .skill-category h3 {
     font-size: 1.25rem;
-    color: var(--maroon);
+    color: var(--maroon-light);
     margin-bottom: 1rem;
 }
 
@@ -280,20 +313,20 @@ a {
 }
 
 .skill-tags span {
-    background: var(--bg-white);
+    background: var(--surface-strong);
     color: var(--text-dark);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border);
     transition: all 0.3s ease;
 }
 
 .skill-tags span:hover {
     background: var(--maroon);
-    color: var(--bg-white);
-    border-color: var(--maroon);
+    color: #fff3ef;
+    border-color: rgba(255, 151, 161, 0.35);
     transform: translateY(-2px);
 }
 
@@ -333,6 +366,7 @@ a {
     background: var(--bg-white);
     padding: 1.5rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
     box-shadow: 0 2px 10px var(--shadow);
     transition: all 0.3s ease;
 }
@@ -363,7 +397,7 @@ a {
 }
 
 .timeline-company {
-    color: var(--maroon);
+    color: var(--maroon-light);
     font-weight: 500;
     margin-bottom: 1rem;
 }
@@ -400,6 +434,7 @@ a {
     background: var(--bg-white);
     padding: 2rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
     box-shadow: 0 2px 10px var(--shadow);
     transition: all 0.3s ease;
 }
@@ -428,12 +463,12 @@ a {
 }
 
 .project-link:hover {
-    color: var(--maroon);
+    color: var(--accent);
     transform: scale(1.1);
 }
 
 .project-type {
-    color: var(--maroon);
+    color: var(--maroon-light);
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 1rem;
@@ -452,12 +487,13 @@ a {
 }
 
 .project-tags span {
-    background: var(--bg-light);
-    color: var(--text-dark);
+    background: var(--surface-strong);
+    color: var(--text-gray);
     padding: 0.375rem 0.75rem;
     border-radius: 4px;
     font-size: 0.85rem;
     font-weight: 500;
+    border: 1px solid var(--border);
 }
 
 /* Education */
@@ -471,6 +507,7 @@ a {
     background: var(--bg-white);
     padding: 2rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
     box-shadow: 0 2px 10px var(--shadow);
     text-align: center;
     transition: all 0.3s ease;
@@ -493,14 +530,14 @@ a {
 }
 
 .education-honors {
-    color: var(--maroon);
+    color: var(--maroon-light);
     font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
 }
 
 .education-school {
-    color: var(--maroon);
+    color: var(--maroon-light);
     font-weight: 500;
     margin-bottom: 0.25rem;
 }
@@ -553,14 +590,16 @@ a {
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    background: var(--bg-light);
+    background: var(--bg-white);
+    border: 1px solid var(--border);
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 .contact-item:hover {
-    background: var(--maroon);
-    color: var(--bg-white);
+    background: linear-gradient(135deg, rgba(91, 23, 34, 0.96), rgba(37, 29, 43, 0.96));
+    color: var(--text-dark);
+    border-color: rgba(255, 151, 161, 0.28);
     transform: translateX(5px);
 }
 
@@ -574,8 +613,9 @@ a {
 
 /* Footer */
 .footer {
-    background: var(--text-dark);
-    color: var(--bg-white);
+    background: #06050a;
+    color: var(--text-gray);
+    border-top: 1px solid var(--border);
     padding: 2rem 0;
     text-align: center;
 }
@@ -604,7 +644,9 @@ a {
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--bg-white);
+        background: var(--surface-strong);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 1rem 2rem;
         box-shadow: 0 5px 15px var(--shadow);

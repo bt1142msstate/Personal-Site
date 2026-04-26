@@ -1,6 +1,9 @@
 var mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
 var navLinks = document.querySelector(".nav-links");
 var navbar = document.querySelector(".nav-container");
+var themeStyles = getComputedStyle(document.documentElement);
+var navBackground = themeStyles.getPropertyValue("--nav-bg").trim();
+var navBackgroundStrong = themeStyles.getPropertyValue("--nav-bg-strong").trim();
 if (mobileMenuToggle && navLinks) {
     mobileMenuToggle.addEventListener("click", function () {
         mobileMenuToggle.classList.toggle("active");
@@ -80,11 +83,11 @@ window.addEventListener("scroll", function () {
         return;
     }
     if (currentScroll > 100) {
-        navbar.style.background = "rgba(255, 255, 255, 0.98)";
+        navbar.style.background = navBackgroundStrong;
         navbar.style.boxShadow = "0 2px 15px rgba(0, 0, 0, 0.15)";
     }
     else {
-        navbar.style.background = "rgba(255, 255, 255, 0.95)";
+        navbar.style.background = navBackground;
         navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
     }
 });
